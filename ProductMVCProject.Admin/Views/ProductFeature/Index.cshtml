@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProductMVCProject.Data.Model.ProductFeature>
+@{
+    ViewBag.Title = "Ürün Özellikleri";
+}
+
+	<h2>@ViewBag.SelectedProduct.ProductName Özellikleri</h2>
+
+<p>
+  @Html.ActionLink("Yeni Özellik", "Create", new { id = ViewBag.SelectedProduct.ProductId }, new { })
+</p>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.FeatureName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.FeatureValue)
+			</th>
+		</tr>
+	</thead>
+		@Html.Hidden("selectedProductId", (string)ViewBag.SelectedProduct.ProductId.ToString(), new { })
+		<tbody>
+			@foreach (var item in Model)
+			{
+
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem=>item.FeatureName)
+
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem=>item.FeatureValue)
+					</td>
+					<td>
+						@Html.ActionLink("Düzenle", "Edit", new { id = item.ProductFeatureId, productId = ViewBag.SelectedProduct.ProductId }) |
+						@Html.ActionLink("Detaylar", "Details", new { id = item.ProductFeatureId, productId = ViewBag.SelectedProduct.ProductId }) |
+						@Html.ActionLink("Sil", "Delete", new { id = item.ProductFeatureId})
+					</td>
+				</tr>
+			}
+
+  
+
+
+  </tbody>
+</table>
+<div>
+	@Html.ActionLink("Listeye Dön","Index","Product")
+</div>

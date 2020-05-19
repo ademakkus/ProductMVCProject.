@@ -1,0 +1,40 @@
+﻿@model ProductMVCProject.Data.Model.ProductFeature
+
+@{
+    ViewBag.Title = "Ürün Özellik Detayları";
+}
+
+	<h2>Ürün Özellik Detayları</h2>
+
+<div>
+    
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Product.ProductName)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Product.ProductName)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.FeatureName)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.FeatureName)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.FeatureValue)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.FeatureValue)
+		</dd>
+
+	</dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new {id=Model.ProductFeatureId,productId=Model.ProductId}) |
+    @Html.ActionLink("Listeye Dön", "Index",new { id = Model.Product.ProductId })
+</p>

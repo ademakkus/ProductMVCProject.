@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ProductMVCProject.Data.Model.Product>
+@{
+	ViewBag.Title = "Ürünler";
+
+}
+<h2>Ürünler</h2>
+<p>
+  @Html.ActionLink("Yeni Ürün","Create")
+
+  <table class="table table-hover">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">
+					@Html.DisplayNameFor(model => model.Category.CategoryName)
+				</th>
+				<th scope="col">
+					@Html.DisplayNameFor(model => model.ProductName)
+				</th>
+				<th scope="col">
+					İşlemler
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+
+				<tr scope>
+					<td>
+						@Html.DisplayFor(model => item.Category.CategoryName)
+					</td>
+					<td>
+						@Html.DisplayFor(model => item.ProductName)
+					</td>
+					<td>
+						@Html.ActionLink("Düzenle", "Edit", new { id = item.ProductId })|
+						@Html.ActionLink("Detaylar", "Details", new { id = item.ProductId })|
+						@Html.ActionLink("Sil", "Delete", new { id = item.ProductId })
+					</td>
+				</tr>
+			}
+		</tbody>
+  </table>
+</p>

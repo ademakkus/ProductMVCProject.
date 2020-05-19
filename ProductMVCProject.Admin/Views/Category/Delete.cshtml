@@ -1,0 +1,28 @@
+﻿
+@model ProductMVCProject.Data.Model.Category
+@{
+    ViewBag.Title = "Kategori Silme ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+	<h2>Kategori Silme</h2>
+
+<h3>Bu kategoriyi silmek istiyor musunuz?</h3>
+<div>
+  <dl class="dl-horizontal">
+    <dt>
+      @Html.DisplayNameFor(model=>model.CategoryName)
+    </dt>
+    <dd>
+      @Html.DisplayFor(model=>model.CategoryName)
+    </dd>
+  </dl>
+</div>
+@using (Html.BeginForm()) { 
+  @Html.AntiForgeryToken() @*Post metottan gelineceğini gösterir*@
+  <div>
+    <input type="submit" value="Sil" class="btn btn-default" /> | 
+    @Html.ActionLink("Listeye Dön","Index")
+  </div>
+
+}
